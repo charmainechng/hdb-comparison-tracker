@@ -1,0 +1,6 @@
+{
+  "name": "EstatePulse SG - HDB Resale Tracker & Comparison",
+  "description": "Singapore HDB resale price tracker and multi-property comparison tool with 1km school radius, MRT proximity, amenity radar, and AI valuation insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
