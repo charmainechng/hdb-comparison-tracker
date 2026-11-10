@@ -7,6 +7,7 @@ import { AffordabilityView } from './components/AffordabilityView';
 import { PriceTrendsView } from './components/PriceTrendsView';
 import { PropertyDetailModal } from './components/PropertyDetailModal';
 import { AiAdvisorModal } from './components/AiAdvisorModal';
+import { LiveDataModal } from './components/LiveDataModal';
 import { HDB_PROPERTIES } from './data/hdbData';
 import { HdbProperty } from './types';
 
@@ -19,6 +20,7 @@ export default function App() {
   const [activeProperty, setActiveProperty] = useState<HdbProperty | null>(null);
   const [selectedRadarProperty, setSelectedRadarProperty] = useState<HdbProperty>(HDB_PROPERTIES[0]);
   const [aiAdvisorOpen, setAiAdvisorOpen] = useState<boolean>(false);
+  const [liveDataOpen, setLiveDataOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const showToast = (msg: string) => {
@@ -66,6 +68,7 @@ export default function App() {
         setActiveTab={setActiveTab}
         compareCount={compareList.length}
         onOpenAiAdvisor={() => setAiAdvisorOpen(true)}
+        onOpenLiveData={() => setLiveDataOpen(true)}
       />
 
       {/* Toast Notification */}
@@ -140,6 +143,12 @@ export default function App() {
         activeProperty={activeProperty || HDB_PROPERTIES[0]}
         compareList={compareList}
         allProperties={HDB_PROPERTIES}
+      />
+
+      {/* Live Data Connector Modal */}
+      <LiveDataModal
+        isOpen={liveDataOpen}
+        onClose={() => setLiveDataOpen(false)}
       />
 
       {/* Quiet Editorial Footer */}

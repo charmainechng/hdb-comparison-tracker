@@ -3,6 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
+import healthHandler from './api/health.ts';
+import hdbresaleHandler from './api/hdbresale.ts';
 
 dotenv.config();
 
@@ -13,6 +15,10 @@ const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 app.use(express.json({ limit: '5mb' }));
+
+// Serverless Live Data Connectors
+app.all('/api/health', healthHandler);
+app.all('/api/hdbresale', hdbresaleHandler);
 
 // Server-side Gemini client
 const apiKey = process.env.GEMINI_API_KEY;
